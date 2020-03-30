@@ -1,0 +1,140 @@
+% \documentclass{report}
+% \usepackage[hidelinks]{hyperref}
+% \usepackage{amsthm}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsfonts}
+% \usepackage{xcolor}
+% % \usepackage{bm}
+% \usepackage{mathrsfs}
+% \newtheorem{note}{Note}
+% \newtheorem{remark}{Remark}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{definition}{Definition}
+% \newcommand{\norm}[1]{\lVert#1\rVert}
+% \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+% \newcommand{\absl}[1]{\lvert#1\rvert}
+% \renewcommand{\Re}{\operatorname{Re}}
+% \renewcommand{\Im}{\operatorname{Im}}
+% \newcommand{\diam}{\operatorname{diam}}
+% \begin{document}
+% \tableofcontents
+\chapter{Continuity}
+We can define the limit under a function $\lim_{x\to p}f(x)=q$ either using neighborhood language:
+\begin{equation*}
+    \forall \epsilon>0, \exists \delta>0, 0<d_X(x,p)<\delta \Rightarrow d_Y(f(x)-q)<\epsilon
+\end{equation*}
+or sequence language:
+\begin{equation*}
+    \lim_{n\to\infty}f(p_n)=q \quad \forall (p_n)~s.t.~p_n\neq p, \lim_{n\to\infty}p_n=p 
+\end{equation*}
+. This limit operation (or we can call it topological operation), is communitive with arithmetic operation on function like addition and multiplication. If we give the value of function at the limit point, we can talk about continuous functions. Notice if point $p$ is an isolated point, every function is continuous at $p$ by definition. \par
+There are some equivalent characterizations of continuous function: 
+\begin{enumerate}
+    \item $f$ is continuous.
+    \item For every subset $A$, one has $f(\bar{A})\subset\overline{f(A)}$.
+    \item For every open subset $V$, $f^{-1}(V)$ is open.
+    \item For every closed subset $V$, $f^{-1}(V)$ is closed.
+\end{enumerate}
+By above characterizations, we can easily prove that the composition of continuous functions are continuous function. Also,addition and multiplication preserves continuity by properties of limit operation.\par
+Recall we have two identity: $f(f^{-1}(E))\subset E$ and $f^{-1}(f(E))\supset E$. This is useful when prove continuous function maps compact set to compact set. By the compact of image and least upper bound property of $\mathbb{R}^1$, $f$ can attain the maximum and minimum value. Also, a continuous map from compact metric space to another metric space is a homeomorphism (continuous bijection with continuous inversion).
+\begin{remark}
+    The first inclusion is equality if $f$ is surjective and the second inclusion is equality if $f$ is injective.
+\end{remark}
+The counterexample for $E$ not compact on $\mathbb{R}^1$ (not closed or not bounded) is interesting (Theorem 4.20)
+\begin{enumerate}
+    \item Continuous function but not bounded on a bounded set $E$ (hence $E$ is not closed): $f(x)=\frac{1}{x-x_0}$ with $x_0$ is a limit point not in $E$.
+    \item  Continuous function but not uniformly continuous on a bounded set $E$ (hence $E$ is not closed): $f(x)=\frac{1}{x-x_0}$ with $x_0$ is a limit point not in $E$.
+    \item  Continuous function but not attained maximum on bounded set $E$ (hence $E$ is not closed): $g(x)\frac{1}{1+(x-x_0)^2}$ with $x_0$ is a limit point not in $E$.
+    \item For a non-bounded set $E$, $f(x)=x$ and $h(x)=\frac{x^2}{1+x^2}$ are counterexample for boundedness and maximum. But there is no example for uniformly continuous for any non compact and unbounded set $E$. Indeed, if $E$ is the set of all integers, any function on $E$ is uniformly continuous.
+\end{enumerate}
+If $E$ is not compact. there is example, a function $f$ is not a homeomorphism even if $f$ is bijective and continuous and $f(E)$ is compact ($f(x)=(\cos x,\sin x)$). \par
+Another topological property related to continuous function is continuous function maps connected set to connected set. One consequence of this property is intermediate values theorem. However, intermediate value property does not implies continuous ($\sin \frac{1}{x}$ with $0$ at $x=0$).\par
+Monotonic functions has many good properties. The right and left limit of points always exist (Theorem 4.29). In proof of Theorem 4.29, we show for any $\epsilon>0$, there exists $\delta>0$ s.t. $\abs{f(t)-A}<\epsilon$ with $x-\delta<t<x$. However, no hint shows the $\delta$ tends to $0$. But if $(t_n)\subset (x-\delta,x)$, then $A-\epsilon<\liminf f(t_n)\leq \limsup f(t_n)<A+\epsilon$. Thus for any converge sequence $(t_n)$ less than $x$, $A-\epsilon<\lim (f_n)<A+\epsilon$. Hence $f(x-)=A$.\par
+An interesting example for monotonic function is in Remark 4.31. It construct a monotonic function with countable discontinuous point s which is dense in $(a,b)$. The construction is by an absolutely convergent series and all rationals less than a particular value $x$. Formally:
+\begin{equation*}
+    f(x)=\sum_{x_n<x}c_n
+\end{equation*}
+where $\sum c_n$ converges absolutely. The function constructed can be either left continuous or right continuous.
+\chapter{Differentiation}
+The steps for introducing differentiation is same as for continuity:
+\begin{enumerate}
+    \item definition, notice the derivative of end points are left (right) derivative:
+    \begin{equation*}
+        f'(x)=\lim_{t\to x}\frac{f(t)-f(x)}{t-x}\quad t\neq x
+    \end{equation*}
+    \item arithmetic operation under differentiation, like addition, multiplication and division.
+    \item composition under differentiation: $(f\circ g(y))'=f'(g(y))g'(y)$.
+\end{enumerate}
+Next we talk about mean value theorem. The frequently used form is 
+\begin{equation*}
+    f(b)-f(a)=(b-a)f'(x) \quad x\in (a,b)
+\end{equation*}
+There is also an intermediate value theorem for derivative of $f$. But we need not assume the continuity for derivative. The proof is by construct function $g(x)=f(x)-\lambda x$ and shows there is a maximum (minimum) value for $g(x)$ and thus $g'(x)=0$. Notice by definition of derivative, $g'(a)<0$ implies $g(x_1)<g(a)$ for some $a<x_1<b$. An consequence of this intermediate value theorem is that $f'$ cannot have any simple discontinuities.\par
+The proof of L'Hospital's rule uses density of $\mathbb{R}$ a lot. Notice to apply L'Hospital's rule, one of following condition needs to be satisfied:
+\begin{enumerate}
+    \item $f(x)\to 0$ and $g(x)=0$ as $x\to a$
+    \item $g(x)\to +\infty$ or $g(x)\to -\infty$ as $x\to a$
+\end{enumerate}
+In the end of this chapter we talk about higher order derivative and Taylor's theorem. To make $f^{(n)(x)}$ exists at $x$. $f^{(n-1)}(x)$ must exist in a neighborhood of $x$. And to make proceeding statement true, $f^{(n-2)}(x)$ must be differentiable in that neighborhood.\par
+For vector-valued functions, the derivative exists if the norm of different between quotient and a value tends to 0:
+\begin{equation*}
+    \lim_{t\to x}\abs{\frac{\mathbf{f}(t)-\mathbf{f}(x)}{t-x}-\mathbf{f}'(x)}=0
+\end{equation*}
+The arithmetic operation under differentiation still holds. But the mean value theorem and L'Hospital's rule fails. However, a mean value inequality holds for vector-valued functions: $\abs{\mathbf{f}(b)-\mathbf{f}(a)}\leq (b-a)\abs{\mathbf{f}'(x)}$
+
+\section{Notes and Errata}
+\begin{note}[additional material for proof of Theorem 5.13]
+    We give analogous proof for $g(x)\to -\infty$ as $x\to a$.\par
+    We already have:
+    \begin{enumerate}
+        \item There is a point $c\in(a,b)$, s.t. $\frac{f'(x)}{g'(x)}<r$ for all $x\in (a,c)$.
+        \item If $a<x<y<c$, then there is a point $t\in(x,y)$ s.t. $\frac{f(x)-f(y)}{g(x)-g(y)}=\frac{f'(t)}{g'(t)}$ and by above statement, $\frac{f(x)-f(y)}{g(x)-g(y)}<r$.
+    \end{enumerate}
+    Now suppose $g(x)\to -\infty$ as $x\to a$. We can choose a point $c_1\in(a,y)$ s.t. $g(x)<g(y)$ and $g(x)<0$ if $a<x<c_1$. Thus $\frac{f(x)-g(y)}{g(x)}>0$ and the following steps are the same as in this book.    
+\end{note}
+\chapter{The Riemann-Stieltjes Integral}
+The definition of Riemann Integral is based on partition $P$ of interval $[a,b]$. When upper and lower Riemann integral meets, we say the Riemann integral exists. There is an important criterion of existence of Riemann integral, but we postpone it until we talk about Lebesgue integral.\par
+Given a monotonically increasing function $\alpha(x)$, if we use the increment value $\alpha(x_i)-\alpha(x_{i+1})$ between two points $x_i$ and $x_{i+1}$ instead of the difference $x_{i+1}-x_i$, we can define Riemann-Stieltjes integral similarly.\par
+Now we give a criterion of existence of Riemann integral. 
+\begin{theorem}\label{thm: theorem 6.6}
+    $f\in\mathscr{R}(\alpha)$ on $[a,b]$ if and only if for every $\epsilon>0$ there is a partition $P$ such that
+    \begin{equation*}
+        U(P,f,\alpha)-L(P,f,\alpha)<\epsilon
+    \end{equation*}
+\end{theorem}
+By theorem \ref{thm: theorem 6.6}, we can show the following functions are R-S integrable.
+\begin{enumerate}
+    \item $f$ is continuous on $[a,b]$
+    \item $f$ is monotonic on $[a,b]$ and $\alpha$ is continuous on $[a,b]$
+    \item $f$ is bounded on $[a,b]$, f has only finitely many points of discontinuity on $[a,b]$ and $\alpha$ is continuous at every point at which f is discontinuous.
+    \item $f=\phi(g)$ where $\phi$ is continuous and $g$ is R-S integrable.
+\end{enumerate}
+Just like continuity and differentiation, there are some arithmetic properties of R-S integral, like addition, scalar multiplication and multiplication, and there are some basic inequalities involve R-S integration (theorem 6.12 and theorem 6.13). But we do not mention them here.\par
+Stieltjes process is somewhat more flexibility than original Riemann integral: If $\alpha(x)$ is a pure step function, then the integral reduces to a finite or infinite series. If $\alpha(x)$ has an integrable derivative, i.e., $\alpha'(x)\in\mathscr{R}$, then the R-S integral reduces to an ordinary Riemann integral.\par
+The final important theorem for R-S integral is change of variable:
+\begin{theorem}
+    Suppose $\phi$ is a strictly increasing continuous function that maps an interval $[A,B]$ onto $[a,b]$. Suppose $\alpha$ is monotonically increasing on $[a,b]$ and $f\in\mathscr{R}(\alpha)$ on $[a,b]$. Define $\beta(y)=\alpha(\phi(y))$ and $g(y)=f(\phi(y))$. Then $g\in\mathscr{R}(\beta)$ and 
+    \begin{equation*}
+        \int_{A}^{B}g d\beta=\int_{a}^{b}f d\alpha
+    \end{equation*}
+\end{theorem}
+Take $\alpha(x)=x$ and assume $\phi'\in\mathscr{R}$. Then
+\begin{equation*}
+    \int_{a}^{b}f(x) dx=\int_{A}^{B}f(\phi(y))\phi'(y)dy
+\end{equation*}
+Now we talk about connection between integration and differentiation. Let
+\begin{equation*}
+    F(x)=\int_{a}^{x}f(t)dt
+\end{equation*}
+Then $F(x)$ is continuous. Furthermore, $F(x)$ is differentiable at $x_0$ which is continuous point of $f(x)$. $F'(x_0)=f(x_0)$.\par
+If we assume $F(x)$ is differentiable and $F'(x)=f(x)$ then the fundamental theorem of calculus and integration by parts hold.\par
+Finally we talk about R-S integral of vector-valued functions and rectifiable curves. Many analogues of theorems for R-S integral holds for vector-valued functions. We call a continuous mapping $\gamma$ of an interval $[a,b]$ into $\mathbb{R}^n$ a curve in $\mathbb{R}^n$. By partition, we can define the length of $\gamma$:
+\begin{equation*}
+    \Lambda(\gamma)=\sup\Lambda(P,\gamma)=\sup \sum_{i=1}^n\abs{\gamma(x_i)-\gamma(x_{i-1})}
+\end{equation*}
+If $\Lambda(\gamma)<\infty$, we say that $\gamma$ is rectifiable. For continuously differentiable curves $\gamma$. Then length of $\gamma$ can be given as Riemann integral:
+\begin{equation*}
+    \Lambda(\gamma)=\int_{a}^{b}\abs{\gamma'(t)}dt
+\end{equation*}
+% \end{document}

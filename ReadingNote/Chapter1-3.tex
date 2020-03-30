@@ -1,0 +1,209 @@
+% \documentclass{report}
+% \usepackage[hidelinks]{hyperref}
+% \usepackage{amsthm}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsfonts}
+% \usepackage{xcolor}
+% % \usepackage{bm}
+% \usepackage{mathrsfs}
+% \newtheorem{note}{Note}
+% \newtheorem{remark}{Remark}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{definition}{Definition}
+% \newcommand{\norm}[1]{\lVert#1\rVert}
+% \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+% \newcommand{\absl}[1]{\lvert#1\rvert}
+% \renewcommand{\Re}{\operatorname{Re}}
+% \renewcommand{\Im}{\operatorname{Im}}
+% \newcommand{\diam}{\operatorname{diam}}
+% \begin{document}
+% \tableofcontents
+\chapter{The Real and Complex Number Systems}
+In this chapter, we talk about number systems. We begin our topic with rational number and shows rational number field has
+a shortcoming: rational number system does not have \emph{least-upper bound property}.\par 
+We first talk about two topological concept: order set and least-upper bound property. Least-upper bound property implies greatest-lower bounded property (Theorem 1.11). We show that rational number system is an ordered set but does not have least-upper bound property.\par
+In an algebraic view, number systems have an algebraic structure called field. Field $F$ is a set with two operations $+$ and $*$ and they follow distributive law. Under operation $+$, $F$ is a communitive group with identity element 0. Under operation $*$, $F$ is a communitive monoid, with all elements have inverse expect element 0. There are some basic arithmetic properties and rules under these two operations.\par
+We combine the topological and algebraic structure and introduce the ordered field.\par
+Now we back to our number system. We can extend rational number system to real number system and the real number system has least-upper bound property (Theorem 1.19). The proof is rather long and is therefore presented in the Appendix. By least-upper bound property of real number system, we give some properties of real number system:
+\begin{enumerate}
+    \item There is a rational number between two real numbers (Theorem 1.20).
+    \item We can take the nth roots of positive reals (Theorem 1.21).
+\end{enumerate}\par
+Then we give the concept of extended real number system and complex field. Extended real number system is no longer a field. The complex field can be defined as tuples with operation. So the image number $i$ has a clear meaning.\par
+Finally we talk about the Euclidean spaces with inner product and the norm induced by inner product.\par
+\begin{note}[Appendix]
+    \begin{theorem}[Theorem 1.19]
+        There exists an ordered field $R$ which has the least-upper-bound property.\par
+        Moreover, $R$ contains $\mathbb{Q}$ as a subfield.
+    \end{theorem}
+    Here we give the sketch of proof. We first construct the Dedekind cut $R$ from $\mathbb{Q}$. And shows that $R$ is an ordered field with the least-upper-bound property. Notices a cut may not has least upper bound in $\mathbb{Q}$, such as all rational number less than $\sqrt{2}$. For a rational number $r$, the rational cut $r^*$ which consists of all $p\in \mathbb{Q}$ such that $p<r$. And we can construct the isomorphism between $r^*$ and $r$. The second statement of the theorem is in isomorphic sense.\par
+    In this book the author does not prove a fact: any two ordered fields with the least-upper-bound property are isomorphic.
+\end{note}
+\begin{remark}
+    The statement in page 19 is not clear. It should be understand as follows: there is an integer n such that $nw\in \alpha$ but $(n+1)w\notin \alpha$. $n$ can be negative.\par
+\end{remark}
+\begin{note}
+    I wonder the relation between completeness of Dedekind cut and of Cauchy sequence. These are two different construction of real numbers. Also these construction invoke me the real number is the power set of rational number.
+\end{note}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Basic Topology}
+In this chapter, we talk about point-set topology in $\mathbb{R}^n$. Before we talk about topological concept, we talk about set theory. One important observation for set $A$ being infinite set is there is a bijection from set $A$ to a proper subset of $A$. For infinite set, countable sets represent the smallest infinity since no uncountable set can be a subset of a countable set (Theorem 2.8). The countable union of countable sets are still countable.\par
+Usually, the proof of all sequence whose elements are the digits 0 and 1 forming an uncountable set $A$ is to show that there is an element not match all listed sequences if we assume this set is countable. In this book author gives a direct proof: Let set of listed sequences be a countable subset of $A$, the "diagonal" element is always not in this countable subset. Thus every countable set of $A$ is a proper subset of $A$. If $A$ is countable, then $A$ is a proper subset of $A$. This is absurd. Thus $A$ is uncountable.\par
+Now we begin our topic of point-set topology for $\mathbb{R}^n$. In this book, the definition of some concept like neighborhood, open set is different from general topology, since topology we talk about is induced by an usual metric. Here are two not obvious properties:
+\begin{theorem}[Theorem 2.20]
+    If p is a limit point of a set $E$, then every neighborhood of $p$ contains infinitely many points of $E$.
+\end{theorem}
+and its corollary: A finite point set has no limit points.\par
+Some theorems are actually the definition of concept in general topology, such as
+\begin{enumerate}
+    \item Neighborhood is an open set.
+    \item Set $A$ is open if and only if its complement set $A^c$ is closed.
+    \item Union of open set is open.
+\end{enumerate}\par
+Then we talk about an important concept in topology: compactness. Compactness can be used for describe the space but open and closed not, since the properties of being open or closed depends on the space in which it is embedded. The theorems related to compactness are so many, but the proof of them is usually just a verification of definition. In this book we talk about compactness in metric space, however the following holds for a more general space, Hausdorff space.
+\begin{enumerate}
+    \item Suppose $K\subset Y\subset X$. $K$ is compact relative to $X$ if and only if $K$ is compact relative to $Y$ (Theorem 2.33). 
+    \item Compact subsets are closed (Theorem 2.34).
+    \item Closed subsets of compact sets are compact (Theorem 2.35).
+\end{enumerate}
+Here is an important but simple theorem:
+\begin{theorem}[Theorem 2.36]
+    $(K_\alpha)$ is a collection of compact subsets such that the finite intersection is nonempty, then $\cap_\alpha K_\alpha$ is nonempty.
+\end{theorem}
+It is a trivial consequence of another equivalent definition of compactness: $A$ is compact if and only if any collection of closed subsets $(K_\alpha)$, finite intersection of $K_\alpha$ is nonempty implies $\cap_\alpha K_\alpha$ is nonempty. This definition is contrapositive of definition using finite cover.\par
+% Theorem 2.37 is also a trivial consequence of Theorem 2.41 c).\par
+Now we consider the one dimensional version of corollary of Theorem 2.36: For a sequence of decreasing interval $(I_n)$ in $\mathbb{R}^1$, $\cap_1^{\infty}I_n$ is not empty (Theorem 2.38). But the author uses a different proof idea. This different idea shows how the least-upper-bound property plays in infinite intersection for intervals in $\mathbb{R}^1$ and n-cells (closed cubes) in $\mathbb{R}^n$.\par
+Here is an important property of space $\mathbb{R}^n$:
+\begin{theorem}[Theorem 2.40]
+    Every n-cell is compact.
+\end{theorem}
+The proof of Theorem 2.40 uses an important tool. It keeps separating n-cell and shows there is a point in sequences of decreasing sequence of n-cells. The existence of the point is guaranteed by compactness. But it can also be guaranteed by completeness. (Indeed, completeness and precompactness implies compactness, the separation steps  actually show the $\mathbb{R}^n$ is precompact).\par
+Theorem 2.41 generalizes Theorem 2.40, and gives the necessary condition for compactness in $\mathbb{R}^n$.
+\begin{theorem}
+    The following statements are equivalent for a set $E$ in $\mathbb{R}^n$:
+    \begin{enumerate}
+        \item $E$ is closed and bounded.
+        \item $E$ is compact.
+        \item Every infinite subset of $E$ has a limit point in $E$.
+    \end{enumerate}
+\end{theorem}
+The proof of Theorem 2.41, 3 implying 2, implicitly use the converse part of the sequence lemma (Lemma 21.2 in Munkres' Topology): Let $X$ be a metrizable space and $A\subset X$, then for any limit point $x$ of $A$, there is a sequence of points of $A$ that converges to $x$. If $X$ is not a metric space or is not metrizable, the sequence of convergent points can not be extracted. The proof also shows the limit point of this sequence is unique in metric space.\par
+After compact sets, we study perfect sets. Here is one character of perfect sets: A non empty perfect sets in $\mathbb{R}^n$ is uncountable (Theorem 2.43). The proof given in this book is a little mysterious: $V_1$ is a neighborhood of $x_1$ but $V_n$ may be not a neighborhood of $x_n$ for $n>1$. If we suppose a non empty perfect set is countable, we can construct a sequence of compact sets and shows the intersection contains no point. Thus we have proved Theorem 2.43\par
+The Cantor set is an interesting example. It is compact since it is closed by intersection of closed set and obvious bounded. This intersection procure explains an usually misunderstanding: For finite $N$, $\cap_{n=1}^N E_n=E_N$ but expression $E_\infty$ has no meaning. We can only has a "legal" expression $\cap_{n=1}^\infty E_n$. Since every $E_n$ is closed (the index is always finite if we consider a particular index), we can state that $\cap_{n=1}^\infty E_n$ is always closed. It is also perfect. Since every neighborhood (segment $S$ contains $x$) of $x$ in Cantor set intersects other points $x_n$ (end point of $E_n$ contains $x$). \par
+Finally we talk about connected sets. The definition of connected sets in this book is little different from general topology. Usually we say $A$ is connected if $A$ can not be written as union of two disjoint open set. And the statement $\bar{A}\cap B$ $A\cap \bar{B}$ are empty is an consequence of usual definition (Lemma 23.1 in Munkres' Topology). This is easy since $A=B^c$ and $B$ is open implies $A$ is closed. Thus $A$ and $B$ is both open and closed. The connected subsets of the line have a particularly simple structure: every point between two points in connected subsets is in connected subsets. This simple structure is by $\mathbb{R}^1$ being an ordered set.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Numerical Sequences and Series}
+\section{Limit of numerical sequences}
+In this chapter, we give some basic properties of limits and some convergence test of series. First we talk about limit in metric space. One conclusion is the converse part of the sequence lemma (Lemma 21.2 in Munkres' Topology). For a limit point $p$ of $E$, we can obtain a sequence in $E$ which converges to $p$ (Theorem 3.2 (d)). And the limit in metric space is unique (Theorem 3.2 (b)). Then we talk about algebraic operations on limit process in $\mathbb{R}^1$ and in $\mathbb{R}^n$, like addition, scalar multiplication, multiplication and division on convergent sequences.\par
+Theorem 3.6 is a converse conclusion of Theorem 3.2 (d). Theorem 3.2 (d) says given a limit point of set $A$, we can obtain a convergent sequence from $A$. Theorem 3.6 guarantees the existence of the limit point for a sequence in compact set. The existence of the subsequence is also by the converse part of the sequence lemma (Lemma 21.2 in Munkres' Topology). \par
+In Theorem 3.7, we show the subsequential limits form a closed set, which is important in definition of $\limsup$. Given a sequence $(s_n)$, let set $E$ contains all limits of subsequence. The idea of the proof of Theorem 3.7 is to draw a subsequence from each converge subsequence which the limit is converge to the limit point of $E$.\par
+Then we talk about the Cauchy sequence. Let set $E_N$ consists of the points $p_N, p_{N+1}, p_{N+2},\dots$. The equivalent of $(p_n)$ is a Cauchy sequence is $\lim_{N\to \infty}\diam E_N=0$.\par
+Here is a theorem about limit of compact sets:
+\begin{theorem}[Theorem 3.10]
+    If $K_n$ is a sequence of compact sets in metric space $X$ such that $K_n\supset K_{n+1}$ and $\lim\diam K_n=0$, then $\cap_1^{\infty}K_n$ consists of exactly one point.
+\end{theorem}
+\emph{Empty set is compact since every finite set is compact}. So the statement of Theorem 3.10 is ambiguous since there are two definitions of diameter of empty set. We must exclude the case $K_n=\emptyset$. However, the author exclude the definition of diameter for empty set. Thus we can assume $K_n$ is not empty safely. Also, the metric space guarantees the $\cap_1^\infty K_n$ consists exactly one point.
+% Before we introduce the concept completeness, we can study the convergence of Cauchy sequence in compact set. 
+Theorem 3.11 gives the equivalence of Cauchy sequence and convergent sequence in $\mathbb{R}^n$ The proof of Theorem 3.11 uses boundedness and closed sets is compact for metric space. If we only concern the convergence of Cauchy sequence, we have concept "completeness" to describe the space that every Cauchy sequence is convergent. For boundedness and convergence, convergence implies boundedness, and the converse is true if we talk about monotonic sequence. The limit is given by least upper bound. The proof is easy if we using least upper bound\par
+One important concept is upper and lower limits. For any real number sequence, the upper and lower limits always exist if we allow the $+\infty$ and $-\infty$ for limit. The definition of upper limit is the sup of all limits of subsequence and we denote as $\limsup_{n\to \infty}s_n=\sup E$, where $E$ contains all limits of subsequence. The lower limits are similarly defined. Theorem 3.17 says there actually exists a subsequence which the limit is $\limsup s_n$ (Theorem 3.17 (a)), and for any number $x>\limsup s_n$, $s_n<x$ for $n>N$ with large enough $N$ (Theorem 3.17 (b)). Then the uniqueness of $\limsup s_n$ is by these two properties.\par
+The upper limit preserves the order. Precisely, $s_n\leq t_n$ implies $\limsup s_n\leq \limsup t_n$ (Theorem 3.19). We can prove by contradiction and by Theorem 3.17 (b). \emph{Here is an useful trick. If we assume $a>b$, we can always find $c$ with $a>b>c$}. $\limsup s_n>c> \limsup t_n$ will leads a contradiction.\par
+Finally author gives some special and important limits:
+\begin{theorem}[Theorem 3.20]\ \par
+    \begin{enumerate}
+        \item If $p>0$, then $\lim_{n\to \infty}\frac{1}{n^p}=0$.
+        \item If $p>0$, then $\lim_{n\to \infty}\sqrt[n]{p}=0$.
+        \item $\lim_{n\to \infty}\sqrt[n]{n}=1$
+        \item If $p>0$ and $\alpha$ is real, then $\lim_{n\to \infty}\frac{n^\alpha}{(1+p)^n}=0$.
+        \item If $\abs{x}<1$, then $\lim_{n\to \infty}x^n=0$
+    \end{enumerate}
+\end{theorem}
+ Many proofs use binomial theorem and "sandwich" rule.
+\section{Convergent criterion and some special series}
+One of most hardest and important part of this book is series and its convergent criterion. We can also use Cauchy criterion for series. It has some easy consequences:
+\begin{enumerate}
+    \item If $\sum a_n$ converges, $\lim a_n=0$.
+    \item Absolutely convergence implies convergence.
+    \item Comparison test: If $\abs{a_n}<c_n$ for $n>N_0$, where $N_0$ is some fixed integer, then $\sum c_n$ converges implies $\sum a_n$ converges.
+\end{enumerate}
+Here is another useful criterion of convergence. This theorem says a rather "thin" subsequence of $(a_n)$ determines the convergence or divergence of $\sum a_n$.
+\begin{theorem}[Theorem 3.27]
+    Suppose $a_1\geq a_2\geq a_3\geq a_4\geq \dots \geq 0$. Then the series $\sum a_n$ converges if and only if the series $\sum_{k=0}^\infty 2^ka_{2^k}$ converges.
+\end{theorem}
+The proof of this theorem is by showing the partial sum $\sum_{k=0}^n 2^ka_{2^k}\leq 2\sum_{k=0}^m a_n$ with $m>2^n$ and $\sum_{k=0}^n 2^ka_{2^k}\geq\sum_{k=0}^m a_n$ with $m<2^n$. By this theorem, we can examine the convergence and divergence condition for series $\sum \frac{1}{n^p}$, $\sum_{n=2}^\infty \frac{1}{n(\log n)^p}$ and more complex series involving $\log n$.\par 
+Before we continue our convergent criterion, we talk about the number $e$. We give it definition and shows it is the limit of an important sequence: $\lim_{n\to \infty}(1+\frac{1}{n})^n=e$. By the estimation of convergence speed, we can prove $e$ is irrational.\par
+There are another two convergent tests frequently used: the root tests and the ratio tests:
+\begin{theorem}[Root test]
+    Given $\sum a_n$, put $\alpha=\limsup\sqrt[n]{a_n}$. Then 
+    \begin{enumerate}
+        \item If $\alpha<1$, $\sum a_n$ converges.
+        \item If $\alpha>1$, $\sum a_n$ diverges.
+        \item If $\alpha=1$, the test gives no information.
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}[Ratio test]
+    Given $\sum a_n$. Then 
+    \begin{enumerate}
+        \item $\sum a_n$ converges if $\limsup\abs{\frac{a_{n+1}}{a_n}}<1$ 
+        \item $\sum a_n$ diverges if $\limsup\abs{\frac{a_{n+1}}{a_n}}\geq 1$ for all $n>N_0$, where $N_0$ is a fixed number.
+    \end{enumerate}
+\end{theorem}
+The root tests are more powerful but the ratio tests are easy to apply. The relation of two tests is:
+\begin{theorem}
+    For any sequence $(c_n)$ of positive numbers,
+    \begin{equation*}
+        \liminf_{n\to \infty}\frac{c_{n+1}}{c_n}\leq \liminf_{n\to \infty}\sqrt[n]{c_n},
+    \end{equation*}
+    \begin{equation*}
+         \limsup_{n\to \infty}\sqrt[n]{c_n}\leq\limsup_{n\to \infty}\frac{c_{n+1}}{c_n}
+    \end{equation*}
+\end{theorem}
+\emph{Here is another useful trick. If we prove $\limsup a_n<\beta$ for any $\beta>\alpha$, we have  $\limsup a_n<\alpha$. This is also another version of above trick: If we assume $a>b$, we can always find $c$ with $a>b>c$}.\par
+Now we talk about convergent tests for power series and product of two series. For power series, we have radius of convergence of $\sum c_nz^n$. And the test is familiar with root tests and ratio tests. For product of two series, we first introduce the partial summation formula:
+\begin{equation}
+    \sum_{n=p}^q a_n b_n=\sum_{n=p}^{q-1}A_n(b_n-b_{n+1})+A_q b_q-A_{p-1}b_p
+\end{equation}
+where $A_n=\sum_{k=0}^na_k$.
+If $A_n$ is bounded and $b_n$ decrease monotonically to 0, then $\sum a_n b_n$ converges (Theorem 3.42). This implies alternating series with absolute value of each term decreasing monotonically to 0 converges. The strength of partial summation formula is that the comparison test is a test for absolute convergence, but the partial summation formula can be used for test for non-absolute convergence.\par
+The Cauchy product $\sum c_n$ where $\sum_{k=0}^na_kb_{n-k}$ is used for product of two series $(\sum a_n)(\sum b_n)$. And it's partial sum converges if one of series converges absolutely (Theorem 3.50). Theorem 3.51 shows the sum of Cauchy product is actually the product of two series if the sum are converges.\par
+\section{Rearrangements}
+Finally in this chapter we talk about rearrangements of series. The rearrangements of non-absolutely convergent series can be any value in extended real field. More precisely, the $\liminf$ and $\limsup$ of rearrangements can be any value in extended real field (Theorem 3.54). This theorem is due to Riemann. But the rearrangements of absolutely convergent series does not affect the limit.\par
+If an infinite series converges, then the associative property holds (by $b_k=a_{k_1+1}+a_{k_1+2}+\dots+a_{k_2}$ and considering $\sum b_k$). But a non converge series has no associative property (consider $\sum (-1)^n$).
+\section{Notes and Errata}
+\begin{note}[convergence of $1+\frac{1}{3}-\frac{1}{2}+\frac{1}{5}+\frac{1}{7}-\frac{1}{4}+\frac{1}{9}+\frac{1}{11}-\frac{1}{6}\dots$]
+    We use Cauchy criterion. The finite sum has associative property, thus 
+    \begin{equation*}
+        \sum_{k=n}^m a_k= r_n+\sum_{k=3i}^{k=3j}(\frac{1}{4k-3}+\frac{1}{4k-1}-\frac{1}{2k})+r_m
+    \end{equation*}
+    where $3i$ is the first number greater than $n$ and $3j$ is the last number less than $m$.
+    Notice:
+    \begin{equation*}
+        \sum_{k=3i}^{k=3j}(\frac{1}{4k-3}+\frac{1}{4k-1}-\frac{1}{2k})=\sum_{k=3i}^{k=3j}\frac{8k-3}{2k(4k-3)(4k-1)}\leq\sum_{k=3i}^{k=3j}\frac{C}{k^2}\leq\sum_{k=n}^{k=m}\frac{C}{k^2}
+    \end{equation*}
+    We know $\abs{r_n}$, $\abs{r_m}$ and $\sum_{k=n}^{k=m}\frac{C}{k^2}$ tends to 0 for $n,m>N$ for large enough $N$. So $\abs{\sum_{k=n}^m a_k}$ tends to 0 for $n,m>N$ for large enough $N$. \par 
+    Thus 
+    \begin{equation*}
+        1+\frac{1}{3}-\frac{1}{2}+\frac{1}{5}+\frac{1}{7}-\frac{1}{4}+\frac{1}{9}+\frac{1}{11}-\frac{1}{6}\dots
+    \end{equation*}
+    converges.
+\end{note}
+\begin{note}[Simple rearrangement of the Alternating Harmonic Series]
+    \begin{definition}[simple rearrangement]
+        A simple rearrangement of a series is a rearrangement of the series in which the positive terms of the rearranged series occur in the same order as the original series and the negative terms occur in the same order. 
+        \end{definition}
+    \begin{definition}[asymptotic density]
+        If $\sum a_n$ is a simple rearrangement of the Alternating Harmonic Series, let $p_k$ be the number of positive terms in the first k terms, $\{a_1, a_2, a_3,\dots,a_k\}$. The asymptotic density, $\alpha$, of the positive terms in the rearrangement is $\alpha = \lim_{k\to \infty} \frac{p_k}{k}$.
+if the limit exists.
+    \end{definition}
+    \begin{theorem}
+        A simple rearrangement of the Alternating Harmonic Series converges to an extended real number if and only if $\alpha$, the asymptotic density of the positive terms in the rearrangement, exists.\par 
+Moreover, the sum of a rearrangement with asymptotic density $\alpha$ is $\ln 2+\frac{1}{2}\ln (\frac{\alpha}{1-\alpha})$
+    \end{theorem}
+\end{note}
+\begin{note}[proof of Theorem 3.54]
+    We choose real-valued sequences $(a_n)$, $(b_n)$ such that $a_n\to a$, $b_n\to b$, $a_n<b_n$, $b_1>0$.\par
+    But no such restriction that $b_2>a_1$, so the second step may not be achieved, except we mean $m_2$ here is greater or equal to 0. If $b_2<a_1$, we just let $m_2=0$, which means no $P_n$ term added. If the last terms are $P_{m_n}$, then $m_n>0$. And we have $x_n-P_{m_n}<b_n$ by construction of $x_n$ ($m_n$ is the smallest integers such that $x_n>b_n$ and $m_n>0$ guarantees there is a $P_{m_n}$ in $x_n$). Then we have $x_n-b_n<P_{m_n}$. and $x_n>b_n$ guarantees $\abs{x_n-b_n}<P_{m_n}$.\par
+    For another inequality, $y_n<a_n$ and $y_n+Q_{k_n}>a_n$ implies $Q_{k_n}>a_n-y_n$ and thus $Q_{k_n}>\abs{a_n-y_n}=\abs{y_n-a_n}$. Since $P_n\to 0$ and $Q_n \to 0$, we see that $x_n\to b$, $y_n\to a$\par
+    Let $x'_{m_n+1}=x'_{m_n+2}=\dots=x'_{m_{n+1}}=x_n$, $x'_{k_n+1}=x'_{k_n+2}=\dots=x'_{k_{n+1}}=x_{n-1}$. We have the partial sum $s_n$ satisfies $s_n<x'_n$ for all $n$. Thus by Theorem 3.19, $\limsup s_n\leq \limsup x'_m=\lim x'_m=b$. The $\liminf$ part are almost the same.
+\end{note}
+% \end{document}

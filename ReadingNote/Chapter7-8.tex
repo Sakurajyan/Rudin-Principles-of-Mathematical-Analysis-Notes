@@ -1,0 +1,226 @@
+% \documentclass{report}
+% \usepackage[hidelinks]{hyperref}
+% \usepackage{amsthm}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsfonts}
+% \usepackage{xcolor}
+% % \usepackage{bm}
+% \usepackage{mathrsfs}
+% \newtheorem{note}{Note}
+% \newtheorem{remark}{Remark}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{definition}{Definition}
+% \newcommand{\norm}[1]{\lVert#1\rVert}
+% \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+% \newcommand{\absl}[1]{\lvert#1\rvert}
+% \renewcommand{\Re}{\operatorname{Re}}
+% \renewcommand{\Im}{\operatorname{Im}}
+% \newcommand{\diam}{\operatorname{diam}}
+% \begin{document}
+% \tableofcontents
+\chapter{Sequences and Series of Functions}
+The main problem this chapter focuses is when the limit processes can be interchanged with series, integral and differentiation. Another problem is what family of functions is dense in continuous function space on compact set.\par
+We first define the limit function $f(x)$ of sequence $(f_n(x))$ as pointwise limit of $(f_n(x))$. We give some examples in book, which show the limit process can not be interchanged carelessly.\par
+\section{Uniform convergence}
+To avoid the interchange problem, we introduce a new concept, uniform convergence:
+\begin{definition}
+    A sequence of functions $(f_n(x))$ converges uniformly on $E$ to a function $f$ if for every $\epsilon>0$ there is an integer $N$ such that $n>N$ implies:
+    \begin{equation*}
+        \abs{f_n(x)-f(x)}\leq \epsilon
+    \end{equation*}
+    for all $x\in E$.
+\end{definition}
+A very convenient test for uniform convergence is Weierstrass test. It says if $\abs{f_n(x)}<M_n$ and $\sum M_n$ converges, then $\sum f_n(x)$ converges uniformly.\par
+Under uniform convergence, we have following interchange statement:
+\begin{enumerate}
+    \item If $f_n\to f$ uniformly, then $\lim_{t\to x}\lim_{n\to \infty}f_n(t)=\lim_{n\to \infty}\lim_{t\to x}f_n(t)$.
+    \item If $(f_n(x))$ are continuous and $f_n\to f$ uniformly, then $f$ is continuous. The converse is true if $(f_n(x))$ are on compact set $K$ and $(f_n(x))$ is decreasing sequence.
+    \item If $(f_n(x))$ are R-S integrable and $f_n\to f$ uniformly, then $f$ is R-S integrable and $\int_{a}^{b}fd\alpha=\lim_{n\to \infty}\int_{a}^{b}f_n d\alpha$.
+    \item If $(f_n(x))$ are differentiable, $(f_n(x))$ converges for some point $x_0$ and $(f'_n(x))$ converges uniformly, then $f_n(x)\to f(x)$ uniformly and $f'(x)=\lim_{n\to\infty}f'_n(x)$.
+\end{enumerate}
+By the second statement, we claim $C(K)$ is complete space with supremum norm: $\norm{f}=\sup\abs{f(x)}$.\par
+We know for any bounded infinite sequence in $\mathbb{R}^n$, we can extract a convergent subsequence. This is by the relation between boundedness and compact for $\mathbb{R}^n$. We will talk about similar properties for functions, but first we need to specify what convergence we consider. We will consider pointwise convergence and uniform convergence.\par 
+By diagonal process, given a sequence of pointwise bounded functions $(f_n(x))$ on $E$, we can extract a subsequence which converges on a countable subset of $E$. But we can not extract a subsequence which converges on $E$ even if  $(f_n(x))$ is uniformly bounded. \par
+We want to find a type a convergence which helps to make a subset of $C(K)$ 'compact'.
+\section{Continuous function space}
+To solve the problem at the end of section 1, we need a more stronger continuity for family of functions, called equicontinuity.\par
+\begin{definition}
+    A family $\mathscr{F}$ of complex functions $f$ defined on a set $E$ in a metric space $X$ is said to be equicontinuous on $E$ if for every $\epsilon>0$ there exists a $\delta>0$ s.t.
+    \begin{equation*}
+        \abs{f(x)-f(y)}<\epsilon
+    \end{equation*}
+    whenever $d(x,y)<\delta$, $x\in E$, $y\in E$ and $f\in \mathscr{F}$.
+\end{definition}
+It is clear that every member of an equicontinuous family is uniformly continuous.\par
+Here is a criterion for equicontinuity: If $(f_n(x))$ is a sequence of continuous function on a compact set $K$, and $f_n(x)\to f(x)$ uniformly, then $(f_n(x))$ is equicontinuous on $K$.\par
+Now we give the 'relative compactness' of a family of functions.
+\begin{theorem}
+    If $K$ is compact, if $(f_n(x))\subset C(K)$, and if $(f_n(x))$ is pointwise bounded and equicontinuous on $K$, then
+    \begin{enumerate}
+        \item $(f_n(x))$ is uniformly bounded on $K$.
+        \item $(f_n(x))$ contains a uniformly convergent subsequence ($(f_n(x))$ is 'relative compact').
+    \end{enumerate}
+\end{theorem}
+Actually, the converse is also true, and this result is Ascoli theorem.\par
+The next topic of this section is the density subset of a continuous function space on compact space $K$. This result is Stone-Weierstrass theorem.\par
+First we show the Weierstrass' result: for a function $f\in C(K)$, there is a sequence of polynomial $(P_n)$ that converges to $f$ uniformly. In other words, the space of polynomial functions on $K$ is dense in $C(K)$.\par
+To generalize the Weierstrass' result, we need to isolate some properties of the polynomials.
+\begin{definition}[algebra]
+    A family $\mathscr{A}$ of complex functions defined on a set $E$ is said to be an algebra if for $f, g\in\mathscr{A}$:
+    \begin{enumerate}
+        \item $f+g\in\mathscr{A}$
+        \item $fg\in\mathscr{A}$
+        \item $cf\in\mathscr{A}$ for all $c\in \mathbb{C}$
+    \end{enumerate}
+\end{definition}
+\begin{definition}[seperate points]
+    Let $\mathscr{A}$ be a family of functions on a set $E$. Then $\mathscr{A}$ is said to separate points on $E$ if to every pair of distinct points $x_1,x_2\in E$, there is a function $f\in\mathscr{A}$ such that $f(x_1)\neq f(x_2)$.
+\end{definition}
+\begin{definition}[vanishes at no points]
+    Let $\mathscr{A}$ be a family of functions on a set $E$. Then $\mathscr{A}$ vanishes at no points on $E$ if to every point $x\in E$, there is a function $f\in\mathscr{A}$ such that $f(x)\neq 0$.
+\end{definition}
+\begin{definition}[lattice]
+    Let $\mathscr{A}$ be a family of real functions on $\mathbb{R}$. Then $\mathscr{A}$ is called a lattice if to every pair of functions $f_1,f_2$, $\max(f_1,f_2)$ and $\min(f_1,f_2)$ is in $\mathscr{A}$.
+\end{definition}
+\begin{remark}
+    A closed subalgebra of $C(K)$ is a lattice.
+\end{remark}
+Now we give the Stone's generalization of the Weierstrass theorem:
+\begin{theorem}[Stone-Weierstrass theorem, real case]
+    Let $\mathscr{A}$ be an algebra of real continuous functions on a compact set $K$. If $\mathscr{A}$ separates points on $K$ and if $\mathscr{A}$ vanishes at no point of $K$, then $\mathscr{A}$ is dense in $C(K)$.
+\end{theorem}
+This theorem does not hold for complex functions. We need an extra condition on $\mathscr{A}$ for complex case: $\mathscr{A}$ is self-adjoint. This means for every $f\in\mathscr{A}$, $\bar{f}$ is in $\mathscr{A}$.
+\begin{theorem}[Stone-Weierstrass theorem, complex case]
+    Let $\mathscr{A}$ be a self-adjoint algebra of complex continuous functions on a compact set $K$. If $\mathscr{A}$ separates points on $K$ and if $\mathscr{A}$ vanishes at no point of $K$, then $\mathscr{A}$ is dense in $C(K)$.
+\end{theorem}
+\chapter{Some Special Functions}
+\section{Power series or analytic functions}
+The analytic functions is of the form:
+\begin{equation*}
+    f(x)=\sum_{n=0}^\infty c_n(x-a)^n
+\end{equation*}
+Although author restricts himself to real values of $x$, many conclusions still hold on complex values of $x$.\par
+We look at some conclusions when $f(x)=\sum_{n=0}^\infty c_nx^n$ converges for $\abs{x}<R$:
+\begin{enumerate}
+    \item $\sum_{n=0}^\infty c_nx^n$ converges uniformly on $\abs{x}<R-\epsilon$ (Theorem 8.1).
+    \item $f(x)$ is continuous and differentiable for $\abs{x}<R$, and $f'(x)=\sum_{n=1}^\infty nc_nx^{n-1}$ for $\abs{x}<R$ (Theorem 8.1).
+    \item If $f(x)$ converges at $x=R$, then $f(x)$ continuous at $x=R$ (Theorem 8.2). This can be used to give another proof of formula for product of two series.
+    \item $f(x)$ has another representation, $f(x)=\sum_{n=1}^\infty\frac{f^{(n)}(a)}{n!}(x-a)^n$. And it converges in $\abs{x-a}<R-\abs{a}$ (Theorem 8.4). Note the new representation may converge in a larger interval. This gives a method for analytic continuation.
+\end{enumerate}\par
+If two power series converges in the same region $\Omega$, and they coincide in some sequence of distinct points with limit point in $\Omega$, then they coincide in region $\Omega$ (Theorem 8.5).
+This theorem is particularly used to extend power series like exponential function from $\mathbb{R}$ to $\mathbb{C}$.
+\section{Exponential, logarithmic and trigonometric functions}
+We define
+\begin{equation*}
+    E(x)=\sum_{n=0}^\infty \frac{z^n}{n!}
+\end{equation*}
+By showing $E(z+w)=E(z)E(w)$ and $E(1)=e$, we have $E(p)=e^p$ for all positive rational number. Then we define $E(x)=\sup e^p$ for $p<x$ with $p\in \mathbb{Q}$. Now we have $E(x)$ defined on all real number $x$. Using $E(z)E(-z)=E(0)=1$, we have $E(x)$ defined on $\mathbb{R}$.\par
+The logarithm function $L(y)$ on $\mathbb{R}^+$ is defined by 
+\begin{equation*}
+    E(L(y))=y
+\end{equation*}
+By differentiating and integrating above equation, we have integral formula for $L(y)$:
+\begin{equation*}
+    L(y)=\int_{1}^{y}\frac{dx}{x}
+\end{equation*}\par
+Using $x^n=E(nL(x))$ and the same procedure as in exponential function, we have $x^\alpha=e^{\alpha \log x}$ for all $\alpha\in \mathbb{R}$ and $x\in \mathbb{R}^+$.\par
+The trigonometric functions are defined as:
+\begin{equation*}
+    C(x)=\frac{1}{2}(E(ix)+E(-ix))
+\end{equation*}
+and 
+\begin{equation*}
+    S(x)=\frac{1}{2i}(E(ix)-E(-ix))
+\end{equation*}\par
+The interesting part in author's constructions is he define $\pi$ as the smallest number which make $C(\frac{\pi}{2})=0$. He also shows by this definition, $E(z+2\pi i)=E(z)$ for complex $z$. And he proves $C(x)$ and $S(x)$ have period $2\pi$. To make his argument meaningful, he finally shows the length of unit circle is $2\pi$ with his definition of $\pi$, and $C(x)$ and $S(x)$ are identical with usual definition of $\cos x$ and $\sin x$.
+\section{Fourier series}
+We define Fourier series of function $f$ as:
+\begin{equation*}
+    \sum_{n=-\infty}^\infty c_ne^{in x}
+\end{equation*}
+where $c_n$ called Fourier coefficients of $f$:
+\begin{equation*}
+    c_n=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{-in x}dx
+\end{equation*}
+Notice $(e^{inx})$ is an orthonormal system of functions on $[-\pi,\pi]$.\par 
+In general, given any orthonormal system of functions $(\phi_n(x))$ on $[a,b]$, consider two partial sums $s_n=\sum_{m=1}^n b_m \phi_m(x)$ and $t_n=\sum_{m=1}^n \gamma_m \phi_m(x)$ where 
+\begin{equation*}
+    b_m=\int_{a}^{b}f(x)\phi_m(x)dx
+\end{equation*}
+We have 
+\begin{equation*}
+    \int_{a}^{b}\abs{f-s_n}^2dx\leq\int_{a}^{b}\abs{f-t_n}^2dx
+\end{equation*}
+and equality holds if and only if $\gamma_m=c_m$.\par
+From above inequality, we have Bessel inequality for all orthonormal $(\phi_n)$:
+\begin{equation*}
+    \sum_{n=1}^\infty\abs{b_n}^2\leq \int_{a}^{b}\abs{f(x)}^2 dx
+\end{equation*}
+and Riemann-Lebesgue lemma: $\lim c_n=0$.\par
+Now we come back to the topic on Fourier series. First is pointwise convergence. By Riemann-Lebesgue lemma, partial sum of Fourier series converges to $f(x)$ at point $x$, where $\abs{f(x+t)-f(x)}\leq M\abs{t}$ for all small enough $t$. The second is partial sum of Fourier series of $f$ converges uniformly to continuous $f$. Since $(e^{inx})$ is orthonormal, this is easy by Stone-Weierstrass theorem and Bessel inequality. Finally by uniform convergence of partial sum of Fourier series of $f$ and $C([-\pi,\pi])$ being dense in $\mathscr{R}$, we have Parseval's theorem:
+\begin{theorem}[Parseval's theorem]
+    Suppose $f$ and $g$ are Riemann-integrable functions with period $2\pi$, and 
+    \begin{equation*}
+        f(x)\sim \sum_{-\infty}^\infty c_n e^{inx}\quad  g(x)\sim \sum_{-\infty}^\infty \gamma_n e^{inx}
+    \end{equation*}
+    Then partial sum $\sum_{-n}^n c_n e^{inx}$ converges to $f$ in 2-norm. And
+    \begin{equation*}
+        \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)\overline{g(x)}dx=\sum_{-\infty}^\infty c_n\bar{\gamma}_n
+    \end{equation*}
+    \begin{equation*}
+        \frac{1}{2\pi}\int_{-\pi}^{\pi}\abs{f(x)}^2dx=\sum_{-\infty}^\infty \abs{c_n}^2
+    \end{equation*}
+\end{theorem}
+\section{The gamma function}
+We define gamma function as:
+\begin{equation*}
+    \Gamma(x)=\int_{0}^{\infty}t^{x-1}e^{-t}dt\quad (0<x<\infty)
+\end{equation*}
+Gamma function $\Gamma(x)$ has following properties and these properties characterize $\Gamma(x)$ completely:
+\begin{enumerate}
+    \item $\Gamma(x)$ is a positive function on $(0,\infty)$.
+    \item $\Gamma(x+1)=x\Gamma(x)$.
+    \item $\Gamma(1)=1$.
+    \item $\log\Gamma$ is convex.
+\end{enumerate}
+This theorem is called Bohr-Mollerup theorem. From the proof of this theorem we have the relation:
+\begin{equation*}
+    \Gamma(x)=\lim_{n\to\infty}\frac{n!n^x}{x(x+1)\cdots(x+n)}
+\end{equation*}
+There is also a simple approximate expression called Stirling's formula for $\Gamma(x+1)$ when $x$ is large:
+\begin{equation*}
+    \lim_{x\to\infty}\frac{\Gamma(x+1)}{(\frac{x}{e})^x\sqrt{2\pi x}}=1
+\end{equation*}\par
+Finally we introduce beta function which is related to gamma function:
+\begin{equation*}
+    B(x,y)=\int_{0}^{1}t^{x-1}(1-t)^{y-1}dt=\frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
+\end{equation*}
+\section{Details of proof}
+A function $f$ called convex function if $f(\lambda x+(1-\lambda)y)\leq \lambda f(x)+(1-\lambda)f(y)$. We first prove that for $x<y<z$. Then:
+\begin{equation*}
+    \frac{f(y)-f(x)}{y-x}\leq \frac{f(z)-f(x)}{z-x}\leq \frac{f(z)-f(y)}{z-y}
+\end{equation*}
+Thus $\frac{f(y)-f(x)}{y-x}\leq\frac{f(z)-f(y)}{z-y}$.
+\begin{proof}
+    Let $y=\lambda x+(1-\lambda)z$. Then $f(y)\leq \lambda f(x)+(1-\lambda)f(z)$. Now we have:
+    \begin{equation*}
+        \frac{f(y)-f(x)}{y-x}\leq \frac{\lambda f(x)+(1-\lambda)f(z)-f(x)}{\lambda x+(1-\lambda)z-x}\leq\frac{f(z)-f(x)}{z-x}
+    \end{equation*}
+    and
+    \begin{equation*}
+        \frac{f(z)-f(y)}{z-y}\geq \frac{f(z)-(\lambda f(x)+(1-\lambda)f(z))}{z-(\lambda x+(1-\lambda)z)}\geq\frac{f(z)-f(x)}{z-x}
+    \end{equation*}
+\end{proof}
+By above inequality, $\log n\leq \frac{\phi(n+1+x)-\phi(n+1)}{x}\leq \log (n+1)$ holds.
+\begin{note}[Proof of Theorem 8.20]        
+    For fixed $y$:
+    \begin{align*}
+        B(\frac{x_1}{p}+\frac{x_2}{q},y)=&\int_{0}^{1}t^{\frac{x_1-1}{p}+\frac{x_2-1}{q}}(1-t)^{y-1}dt\\
+        =&\int_{0}^{1}t^{\frac{x_1-1}{p}}(1-t)^\frac{y-1}{p}t^{\frac{x_2-1}{q}}(1-t)^\frac{y-1}{q}dt
+    \end{align*}
+    Using Holder's inequality, we show $\log B(x,y)$ is convex for fixed $y$.
+\end{note}      
+% \end{document}
+
+
