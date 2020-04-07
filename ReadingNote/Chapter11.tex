@@ -1,0 +1,121 @@
+% \documentclass{report}
+% \usepackage[hidelinks]{hyperref}
+% \usepackage{amsthm}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsfonts}
+% \usepackage{xcolor}
+% % \usepackage{bm}
+% \usepackage{mathrsfs}
+% \newtheorem{note}{Note}
+% \newtheorem{remark}{Remark}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{definition}{Definition}
+% \newcommand{\norm}[1]{\lVert#1\rVert}
+% \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+% \newcommand{\absl}[1]{\lvert#1\rvert}
+% \renewcommand{\Re}{\operatorname{Re}}
+% \renewcommand{\Im}{\operatorname{Im}}
+% \newcommand{\diam}{\operatorname{diam}}
+% \begin{document}
+% \tableofcontents
+\chapter{The Lebesgue Theory}
+This chapter is about Lebesgue theory of measure and integration. Our final goal in this chapter is to introduce the Lebesgue integration. We first introduce the measurable set and the measure on it. Then measurable functions are defined on measurable set. Finally we combine measurable set and measurable function to introduce the Lebesgue integration.
+\section{measure on sets}
+A measure (or a set function) is defined on a family of subset of a given space. First we specify what family of subsets we care about.\par
+We care about two type of family of subsets: the ring and the $\sigma$-ring. A family $\mathscr{R}$ of subsets is called ring if it is closed under union operation and set minus operation. A ring $\mathscr{R}$ is called a $\sigma$-ring if it is closed under countable union operation.\par
+A set function $\phi$ on $\mathscr{R}$ is a map from $\mathscr{R}$ to $\overline{\mathbb{R}}$. We call $\phi$ is additive if $A\cap B=0$ implies $\phi(A\cap B)=\phi(A)+\phi(B)$ and we call $\phi$ is countably additive (or $\sigma$-additive) if $A_j\cap A_i=0$ implies $\phi(\cap_{i=1}^\infty A_i)=\sum_{i=1}^\infty\phi(A)$.\par 
+Countably additive set function $\phi$ on a ring $\mathscr{R}$ is continuous in following sense:
+\begin{enumerate}
+    \item $A_i$ is a sequence of increasing sets, $A_1\subset A_2\subset\cdots$, $A\in \mathscr{R}$ and $A=\cup_{i=1}^\infty A_i$. Then $\phi(A_n)\to \phi(A)$.
+    \item $A_i$ is a sequence of decreasing sets, $A_1\supset A_2\supset\cdots$, $A\in \mathscr{R}$ and $A=\cap_{i=1}^\infty A_i$. If there is a number n s.t. $\phi(A_n)<\infty$, then $\phi(A_n)\to \phi(A)$.
+\end{enumerate}
+\section{Lebesgue measure and extension theorem}
+We define the elementary set (or n-cube) $I$ in $\mathbb{R}^n$ as product of interval $[a_i,b_i]$, $[a_i,b_i)$, $(a_i,b_i]$ and $(a_i,b_i)$. Let $\mathscr{E}$ be the set containing all elementary sets and their finite disjoint union as its elements. $\mathscr{E}$ is a ring but not a $\sigma$-ring. \par
+Now we study the measure $m$ on $\mathscr{E}$. We define the measure $m$ on $\mathscr{E}$ by $m(I)=\prod_{i=1}^n (b_i-a_i)$. This measure is regular, which means for any set $A\in \mathscr{E}$, there is an open set $G$ and closed set $F$ such that $F\subset A\subset G$ and
+\begin{equation*}
+    \phi(G)-\epsilon\leq \phi(A)\leq \phi(F)+\epsilon
+\end{equation*}
+or 
+\begin{equation*}
+    \phi(G-A)\leq\epsilon\quad and \quad\phi(A-F)\leq\epsilon
+\end{equation*}
+We can extend the regular set function $m$ on $\mathscr{E}$ to a countably additive set function $m'$ on a $\sigma$-ring which contains $\mathscr{E}$. For extension we means $m'(A)=m(A)$ for all $A\in \mathscr{E}$.\par
+To construct $m'$, first we define $m^*(E)$ for all $E\in \mathbb{R}^n$ to be:
+\begin{equation*}
+    m^*(E)=\inf\sum_{i=1}^\infty m(A_n)
+\end{equation*}
+where $A_n$ are open elementary sets in $\mathscr{E}$ and $E\subset \cup_{i=1}^\infty A_i$. $m^*$ has subadditivity, which means $m^*(E)\leq \sum_{i=1}^\infty m^*(E_i)$ with $E\subset \cup_{i=1}^\infty E_i$. But by regularity of $m$, we can show $m^*(A)=m(A)$ for all $A\in \mathscr{E}$.\par
+Now we give the extension theorem of regular measure $m$ on ring $\mathscr{E}$. Let $\mathscr{R}_F$ be the set contains all elements in $\mathscr{E}$ and their limit. And let $\mathscr{R}$ be the set contains all elements in $\mathscr{R}_F$ and their countable union. Then $\mathscr{R}$ is a $\sigma$-ring and $m^*$ restrict on $\mathscr{R}$ is countably additive. We say a sequence of set $A_n$ converges to set $A$ if their Hausdorff distance $d(A_n,A)\to 0$.\par
+A remark here is that the $\sigma$-ring $\mathscr{R}$ is not the smallest $\sigma$-ring contains all open set. The element in  smallest $\sigma$-ring containing all open set is called Borel set, and this $\sigma$-ring is denoted as $\mathscr{B}$. The element in $\mathscr{R}$ is the union of a Borel set and a set of measure zero.
+\section{Measurable functions}
+A function defined on measurable space $X$ with values in $\overline{\mathbb{R}}$ is measurable if the set 
+\begin{equation*}
+    \{x|f(x)>a\}
+\end{equation*}
+is measurable for every real number $a$.\par
+Measurable functions are closed under following arithmetic operation:
+\begin{enumerate}
+    \item If $f$ is measurable, then $\abs{f}$ is measurable.
+    \item If $f_n$ is a sequence of measurable function, then $\sup f_n(x)$ and $\limsup f_n(x)$ is measurable.
+    \item If $f$ is measurable, then $f^+=\max(f,0)$ and $f^-=-\min(f,0)$ are measurable.
+    \item If $f$ and $g$ are measurable, and $F$ is continuous on $\mathbb{R}^2$, then $F(f(x),g(x))$ are measurable.
+    \item If $f$ and $g$ are measurable, then $f+g$ and $fg$ are measurable.
+\end{enumerate} 
+\section{Lebesgue integration}
+In the following discussion, we use $\mu$ to represent the Lebesgue measure. First we define the Lebesgue integration for simple function $s(x)=\sum_{i=1}^n c_i\chi_{E_i}(x)$ to be:
+\begin{equation*}
+    \int_{E}s d\mu=\sum_{i=1}^n c_i\mu(E\cap E_i)
+\end{equation*}
+and the integration for non-negative measurable function $f$ to be 
+\begin{equation*}
+    \int_{E}f d\mu=\sup \int_{E}s d\mu
+\end{equation*}
+where $0\leq s\leq f$. For measurable function $f$, we define the integration of $f$ to be:
+\begin{equation*}
+    \int_{E}f d\mu=\int_{E}f^+ d\mu-\int_{E}f^- d\mu
+\end{equation*}
+if at least one integration in right hide side is finite.\par
+There are three important theorems in Lebesgue integration:
+\begin{enumerate}
+    \item Monotone convergence theorem: Given an increasing sequence of non-negative measurable function $f_n$ and its pointwise limit $f$, we have 
+    \begin{equation*}
+        \lim\int_{E}{f_nd\mu}=\int_{E}{fd\mu}
+    \end{equation*}
+    
+    \item Fatou's lemma: Given a sequence of non-negative measurable function $f_n$, we have 
+    \begin{equation*}
+        \int_{E}{\liminf f_n d\mu}\leq \liminf \int_{E}{f_nd\mu}
+    \end{equation*}
+    \item Dominated convergence theorem: Given a sequence of measurable function $f_n$, the pointwise limit of $f_n$ exists, $f_n(x)\to f(x)$. If $\abs{f_n(x)}\leq g(x)$ for a measurable function $g$ with all $n$, we have
+    \begin{equation*}
+        \lim\int_{E}{f_n d\mu}=\int_{E}{fd\mu}
+    \end{equation*}
+\end{enumerate}\par
+Most properties of Riemann integration are also satisfied for Lebesgue integration. We do not repeat them here. But there is one special property satisfied by Lebesgue integration, which is we can partition the domain of integration for measurable set.\par
+\begin{theorem}
+    If $A=\cup A_n$ and $A_i\cap A_j=\emptyset$, then:
+    \begin{equation*}
+        \int_{A}{fd\mu}=\sum_{i=1}^\infty\int_{A_i}{fd\mu}
+    \end{equation*}
+\end{theorem}
+On bounded interval $[a,b]$ in $\mathbb{R}$, if $f$ is Riemann integrable, then $f$ is Lebesgue integrable, and the Lebesgue integration and Riemann integration coincides. Furthermore, for a bounded function on $[a,b]$, $f$ is Riemann integrable if and only if $f$ is discontinuous on a countable set.\par
+\section{$L^2$ function}
+we say a measurable function is in $L^2(X)$ if the integration $\int_{X}{\abs{f}^2d\mu}<\infty$ and we define the norm of $f$ to be $\norm{f}=\left( \int_{X}{\abs{f}^2d\mu} \right)^{\frac{1}{2}}$.\par
+$\{f_n\}$ is called a Cauchy sequence in $L^2(X)$ if there exists a number $N$ such that $\norm{f_n-f_m}\leq \epsilon$ for all $m,n>N$. $L^2(X)$ is complete space, which means Cauchy sequence $f_n$ converges to a measurable function $f$ and $f\in L^2(X)$.\par
+An orthonormal set $\{\phi_n\}$ is said to be complete if for $f\in L^2$, $\int_{X}{f\bar{\phi}_n d\mu}=0$ implies $\norm{f}=0$. Given a complete orthonormal set, for any $L^2$ function $f$, we define
+\begin{equation*}
+    c_n=\int_{X}{f\bar{\phi}_n d\mu}
+\end{equation*}
+We have:
+\begin{equation*}
+    \int_{X}{\abs{f}^2d\mu}=\sum_{i=1}^\infty\abs{c_n}^2
+\end{equation*}
+Conversely, given a sequence of number $c_n$ and $\sum\abs{c_n}^2$ converges, the function $f$ defined to be:
+\begin{equation*}
+    \sum_{i=1}^\infty c_n\phi_n
+\end{equation*}
+is a $L^2$ function (Riesz-Fischer theorem).\par
+Hence every complete orthonormal set induces a 1-1 correspondence between the functions $f\in L^2$ and the sequence $\left\{ c_n\right\}$ for which $\sum_{i=1}^\infty\abs{c_n}^2$ converges. Thus the function space $L^2$ is isometric to the sequence space $\ell^2$.
+% \end{document}
+
