@@ -1,26 +1,312 @@
-\documentclass{report}
-\usepackage[hidelinks]{hyperref}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{xcolor}
-% \usepackage{bm}
-\usepackage{mathrsfs}
-\newtheorem{note}{Note}
-\newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
-\newcommand{\norm}[1]{\lVert#1\rVert}
-\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
-\newcommand{\absl}[1]{\lvert#1\rvert}
-\renewcommand{\Re}{\operatorname{Re}}
-\renewcommand{\Im}{\operatorname{Im}}
-\newcommand{\diam}{\operatorname{diam}}
-\begin{document}
+% \documentclass{report}
+% \usepackage[hidelinks]{hyperref}
+% \usepackage{amsthm}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsfonts}
+% \usepackage{xcolor}
+% % \usepackage{bm}
+% \usepackage{mathrsfs}
+% \newtheorem{note}{Note}
+% \newtheorem{remark}{Remark}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{definition}{Definition}
+% \newcommand{\norm}[1]{\lVert#1\rVert}
+% \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+% \newcommand{\absl}[1]{\lvert#1\rvert}
+% \renewcommand{\Re}{\operatorname{Re}}
+% \renewcommand{\Im}{\operatorname{Im}}
+% \newcommand{\diam}{\operatorname{diam}}
+% \begin{document}
 % \tableofcontents
 \chapter{Functions of Several Variables}
+\section{Linear operator on finite linear space}
+First the author gives some definitions and properties of Euclidean space $\mathbb{R}^n$. These are just reviews of linear algebra so we do not repeat here. Then we talk about linear operator in $L(\mathbb{R}^n,\mathbb{R}^m)$. We define the norm of $A\in L(\mathbb{R}^n,\mathbb{R}^m)$ as:
+\begin{equation*}
+    \norm{A}=\sup_{\abs{x}\leq 1}\abs{Ax}
+\end{equation*}
+By norm of linear operator, we give a important character of invertible linear operator in $\mathbb{R}^n$.
+\begin{theorem}
+    Let $\Omega$ be the set of all invertible linear operators on $\mathbb{R}^n$.
+    \begin{enumerate}
+        \item If $A\in\Omega$, $B\in L(\mathbb{R}^n)$, and $\norm{B-A}\norm{A^{-1}}<1$, then $B\in\Omega$.
+        \item $\Omega$ is open and the mapping $A\mapsto A^{-1}$ is a homeomorphism on $\Omega$.
+    \end{enumerate}
+\end{theorem}
+This theorem can be easily extend to the space bounded linear operator on a Banach space $B(E)$:
+\begin{theorem}
+    Given a Banach space $E$, Let $B(E)$ be the space bounded linear operator on $E$ and the $GL(E)$ be the set of all invertible linear operators on $E$.
+    \begin{enumerate}
+        \item If $A\in GL(E)$, $B\in B(E)$, and $\norm{B-A}\norm{A^{-1}}<1$, then $B\in GL(E)$.
+        \item $GL(E)$ is open and the mapping $A\mapsto A^{-1}$ is a homeomorphism on $GL(E)$.
+    \end{enumerate}
+\end{theorem}
+There are two varieties of the first statement:
+\begin{enumerate}
+    \item Given $A\in GL(E)$, $B\in B(E)$, if $\norm{A^{-1}B-I}<1$ then $B$ has left inverse.
+    \item Given $A\in GL(E)$, if $\norm{A}<1$, then $I-A\in GL(E)$.
+\end{enumerate}
+To prove the above two statements, we use power series.\par
+Using Schwarz inequality we can show:
+\begin{equation*}
+    \norm{A}\leq (\sum_{i,j}a_{i,j}^2)^{\frac{1}{2}}.
+\end{equation*}
+Replace $A$ by $B-A$ and $a_{i,j}$ by continuous functions $a_{i,j}(p)$ we can see mapping $p\mapsto A_p$ is a continuous mapping.
+\section{Differentiation}
+Let $\mathbf{f}$ be a mapping from an open set $E$ in $\mathbb{R}^n$ into $\mathbb{R}^m$. First we talk about the differential of $\mathbf{f}$ or total derivative of $\mathbf{f}$ at $x$. We write $\mathbf{f}'(x)=A$ where $A$ is a linear transformation from $\mathbb{R}^n$ into $\mathbb{R}^m$ which satisfies:
+\begin{equation*}
+\lim_{\mathbf{h}\to 0}\frac{\abs{\mathbf{f}(\mathbf{x}+\mathbf{h})-\mathbf{f}(\mathbf{x})-A\mathbf{h}}}{\abs{\mathbf{h}}}=0
+\end{equation*}
+An useful equivalent definition of $\mathbf{f}'(x)$ is 
+\begin{equation*}
+    \mathbf{f}(\mathbf{x}+\mathbf{h})-\mathbf{f}(\mathbf{x})=\mathbf{f}'(\mathbf{x})\mathbf{h}+\mathbf{r}(\mathbf{h})
+\end{equation*}
+where $\mathbf{r}(\mathbf{h})$ satisfies $\lim_{\mathbf{h}\to 0}\frac{\abs{\mathbf{r}(\mathbf{h})}}{\abs{\mathbf{h}}}=0$. Or $\abs{\mathbf{r}(\mathbf{h})}=\mathbf{\epsilon}(\mathbf{h})\abs{\mathbf{h}}$ where $\mathbf{\epsilon}(\mathbf{h})\to 0$ as $\mathbf{h}\to 0$. In other words, \emph{continuously differentiable transformation behave locally very much like their derivatives}.\par
+For fixed $x$, $\mathbf{f}'(x)$ is a linear transformation in $L(\mathbb{R}^n,\mathbb{R}^m)$. $\mathbf{f}'$ is a function from $E$ into $L(\mathbb{R}^n,\mathbb{R}^m)$.\par
+If $A\in L(\mathbb{R}^n,\mathbb{R}^m)$ and $x\in \mathbb{R}^n$ and we define $A(x)=Ax$, then $A'(x)=A$.\par
+Another type of derivative for $\mathbf{f}(x)=(f_1(x),f_2(x),\dots,f_m(x))$ is partial derivative:
+\begin{equation*}
+    \frac{\partial f_i}{\partial x_j}(x)=\lim_{t\to 0}\frac{f_i(x+te_j)-f_i(x)}{t}
+\end{equation*}
+Notice even if partial derivatives exist at a $x$, $\mathbf{f}(x)$ may not continuous at $x$. Even if $\mathbf{f}(x)$ is continuous at $x$ and partial derivatives exist at $x$, $\mathbf{f}'(x)$ may not exist. However, if $\mathbf{f}'(x)$ exists, then  partial derivatives exist at $x$ and:
+\begin{equation*}
+\mathbf{f}'(x)=
+\begin{bmatrix}     
+    \frac{\partial f_1}{\partial x_1}(x)&\dots&\frac{\partial f_1}{\partial x_n}(x)\\
+    \dots&\dots&\dots\\
+    \frac{\partial f_m}{\partial x_1}(x)&\dots&\frac{\partial f_m}{\partial x_n}(x)
+\end{bmatrix}
+\end{equation*}\par
+Given a mapping $f$ from an open set $E$ in $\mathbb{R}^n$ into $\mathbb{R}$. There is also a type of derivative called directional derivative, defined as:
+\begin{equation*}
+    \lim_{t\to 0}\frac{f(\mathbf{x}+t\mathbf{u})-f(\mathbf{x})}{t}=(\nabla f)(\mathbf{x})\cdot \mathbf{u}
+\end{equation*}\par
+Given differentiable $\mathbf{f}$ which maps a \emph{convex} open set $E$ in $\mathbb{R}^n$ in to $\mathbb{R}^m$, there is a mean value inequality:
+\begin{equation*}
+    \abs{\mathbf{f}(\mathbf{b})-\mathbf{f}(\mathbf{a})}\leq \norm{\mathbf{f}'}\abs{\mathbf{b}-\mathbf{a}}
+\end{equation*}
+\section{The inverse function theorem and the implicit function theorem}
+Before we talk about the inverse function theorem and the implicit function theorem, we give a fixed point theorem which is useful in proof of the inverse function theorem:
+\begin{theorem}
+    If $X$ is complete metric space with metric $d$ and $\phi$ satisfies $d(\phi(x),\phi(y))\leq cd(x,y)$ where $c<1$, then there exists one and only one $x$ such that $\phi(x)=x$.
+\end{theorem}
+Now we give the inverse function theorem:
+\begin{theorem}
+    Suppose $\mathbf{f}$ is a $C^1$ mapping of an open set $E\subset \mathbb{R}^n$ into $\mathbb{R}^n$ and $\mathbf{f}'(a)$ is invertible at some point $a$.. Then there exists an open set $U$ and $V$ s.t. $a\in U$ $f(a)\in V$, and $\mathbf{f}$ is a homeomorphism from $U$ to $V$. Also, the inverse of $\mathbf{f}$ is also in $C^1$.
+\end{theorem}
+The key idea in this proof is constructing function $\phi(x)=x+A^{-1}(y-f(x))$ and showing $\phi(x)$ has a fixed point in an open set $U$. One interesting corollary of above theorem is that if $\mathbf{f}'(x)$ is invertible at $x$ in open set $E$, then $\mathbf{f}$ is an open mapping of $E$ to $\mathbb{R}^n$.\par
+Let $x\in \mathbb{R}^n$ and $y\in \mathbb{R}^m$. Given $A\in L(\mathbb{R}^{n+m},\mathbb{R}^n)$, we define:
+\begin{equation*}
+    A_xh=A(h,0),\quad A_yk=A(0,k),\quad A(h,k)=A_xh+A_yk
+\end{equation*}
+where $h\in \mathbb{R}^n$ and $k\in \mathbb{R}^m$.\par
+The implicit function theorem is:
+\begin{theorem}
+    Let $\mathbf{f}$ be a $C^1$ mapping of an open set $E\subset \mathbb{R}^{n+m}$ into $\mathbb{R}^n$, s.t. $\mathbf{f}(a,b)=0$ for some point $(a,b)\in E$. Let $A=\mathbf{f}'(a,b)$ and assume $A_x$ is invertible. Then:\par
+    There exists open sets $U\subset \mathbb{R}^{n+m}$ and $W\subset \mathbb{R}^m$, with $(a,b)\in U$ and $b\in W$, having the following property:
+    \begin{enumerate}
+        \item To every $y\in W$ there is a unique $x$ such that $(x,y)\in U$ and $\mathbf{f}(x,y)=0$.
+        \item If this $x$ is defined to be $g(y)$, then $g$ is a $C^1$ mapping of $W$ into $\mathbb{R}^n$, $g(b)=a$ and $f(g(y),y)=0$ for $y\in W$.
+        \item $g'(b)=-(A_x)^{-1}A_y$.
+    \end{enumerate}
+\end{theorem}
+    The first statement claims that for $y\in W$, there is a 'curve' satisfies $f(x,y)=0$ for $(x,y)\in U$.
+The second and third statements claim we can have the 'explicit' representation for 'curve' $x=g(y)$ and this curve has derivative at point $b$.\par
+To prove this theorem, we define $F(x,y)=(f(x,y),y)$. Once we show $F(x,y)$ is 1-1 mapping of $E$ into $\mathbb{R}^{n+m}$, we consider curve defined the preimage of the 'vertical' line $(0,y)$. This gives the $x=g(y)$ corresponding to $y$ that makes $f(x,y)=0$. Since $F(x,y)=F(g(y),y)$ is 1-1 mapping and $F'(a,b)$ is invertible, we consider the function $G$ which inverts $F$. By inverse function theorem, $G(f(x,y),y)=(x,y)$ is $C^1$ function, which is obvious in $C^1$ on the 'curve' $f(x,y)=0$. That means $G(0,y)=(g(y),y)$ is in $C^1$ and the first component is in $C^1$ consequently.
+\section{The rank theorem}
+The inverse function theorem and the implicit function theorem are only concerned with function $f$ from $\mathbb{R}^n$ to $\mathbb{R}^n$ and $f'(x)$ is invertible at some point $a$. A more general theorem is concerned with function $f$ from $\mathbb{R}^n$ to $\mathbb{R}^m$ and $f'(x)$ has only rank r.\par
+\begin{theorem}
+    Suppose $m$, $n$, $r$ are nonnegative integers, $m\geq r$, $n\geq r$, $F$ is a $C^1$ mapping of an open set $E\subset \mathbb{R}^n$ into $\mathbb{R}^m$, and $F'(x)$ has rank $r$ for every $x\in E$.\par
+    Fixed $a\in E$, put $A=F'(a)$, let $Y_1$ be subspace $A(\mathbb{R}^n)$ and $P$ is projection in $\mathbb{R}^m$ whose range is $Y_1$. Let $Y_2$ be the null space of $P$.\par
+    Then there are open sets $U$ and $V$ in $\mathbb{R}^n$, with $a\in U$, $U\subset E$, and there is a 1-1 $C^1$ mapping $H$ of $V$ onto $U$ (whose inverse is also in $C^1$) such that
+    \begin{equation*}
+        F(H(x))=Ax+\phi(Ax)\quad (x\in V)
+    \end{equation*}
+    where $\phi$ is a $C^1$ mapping of the open set $A(V)\subset Y_1$ into $Y_2$.
+\end{theorem}
+This theorem illustrates again the fact that the local behavior of a continuously differentiable mapping $F$ near a point $x$ is similar to that of the linear transformation $F'(x)$. Consider the following example:\par
+Given a $C^1$ mapping $F$ that maps $E\subset \mathbb{R}^n$ into $\mathbb{R}^n$ and $F'(x)$ is invertible for all $x\in E$. choose $a\in E$ s.t. there is an open ball $B(a,h)$ in $E$, we have:
+\begin{equation*}
+    F(a+h)-F(a)=F'(a)h+r(h)
+\end{equation*}
+Now consider the mapping $G$ inverts $F$ and an inverse linear transformation $T$ , then:
+\begin{equation*}
+    F(G(T(a+h)))-F(G(T(a)))=Th=F'(a)h+r(h)
+\end{equation*}
+Let $h\to 0$, we see $T\to F'(a)$. The mapping $H$ in this example can be considered as $G(F'(a))$.\par
+So what does the theorem told us? If the range of $F'(x)$ is $\mathbb{R}^m$, we can first map $x$ to $H(x)$, then $F\circ H$ can be described as linear transform $F'(a)$. $H$ changes as your chosen $a$ changes. In other words, after a homeomorphism mapping $x\to H^{-1}(x)$, any function $F$ with $F'(x)$ being surjective can be considered as a linear mapping locally in $H^{-1}(U)$.\par
+Things changes if $F'(a)$ is not surjective. $F'(x)$ can not fill the space $\mathbb{R}^m$, so we fill the rest part by the function $\phi$.
+\section{Derivatives of higher order and differentiation of Integrals}
+We actually talk about higher order partial derivatives, we have mean value theorem on second partial derivative:
+\begin{equation*}
+    f(a+h,b+k)-f(a+h,b)-f(a,b+k)+f(a,b)=hk\frac{\partial^2 f}{\partial x_1\partial x_2}(x,y)
+\end{equation*}
+where $(x,y)$ is in the interior of rectangle having $(a,b)$ and $(a+h,b+k)$ as opposite vertices.\par
+The next topic is the problem when the equation
+\begin{equation*}
+    \frac{d}{dt}\int_{a}^{b}\phi(x,t)d\alpha(x)=\int_{a}^{b}\frac{\partial \phi}{\partial t}(x,t)d\alpha(x)
+\end{equation*}
+is true. The sufficient condition is when $\phi(x,t)$ is in $\mathscr{R}(\alpha)$ for all $t$ and $\frac{\partial \phi}{\partial t}$ is continuous w.r.t $t$.\par
+For Lebesgue integral, we pass the limit in integral sign by dominated convergence theorem.
 \chapter{Integration of Differential Forms}
-\end{document}
-
+This chapter is the hardest part of this book. First we introduce the integration on n-cell:
+\begin{equation*}
+    \int_{\mathbb{I}^n}{f(x)dx}
+\end{equation*}
+This integration is assigned by integrating in each dimension one by one.\par
+Another tools in integration on higher dimension is change of variables:
+\begin{equation*}
+    \int_{\mathbb{R}^n}{f(y)dy}=\int_{\mathbb{R}^n}{f(T(x))\abs{J_T(x)}dx}
+\end{equation*}
+where $T$ is a 1-1 $C^1$ mapping and $J_T(x)\neq 0$ on support of $f(y)$.
+\section{Differential forms}
+There are lots of definitions in topic of differential forms. First we introduce the k-surface:
+\begin{definition}
+    Suppose $E$ is an open set in $\mathbb{R}^n$. A k-surface in $E$ is a $C^1$ mapping $\Phi$ from a compact set $D\subset \mathbb{R}^k$ in to $E$.
+\end{definition}
+The 'k' indicates the dimension of parameter of $\Phi$. Roughly speaking, the theory of differential form is the study of integration of surface. The definition of differential form makes this idea concrete:
+\begin{definition}
+    Suppose $E$ is an open set in $\mathbb{R}^n$. A differential form of order $k\geq 1$ in $E$ is a function $\omega$, symbolically represented by the sum:
+    \begin{equation*}
+        \omega=\sum a_{i_1,\dots,i_k}(x)dx_{i_1}\wedge\cdots dx_{i_k}
+    \end{equation*}
+    which assigns to each k-surface $\Phi$ in $E$ a number $\omega(\Phi)=\int_{\Phi}{\omega}$ according to the rule:
+    \begin{equation*}
+        \int_{\Phi}{\omega}=\int_{D}{\sum a_{i_1,\dots,i_k}(\Phi(u))\frac{\partial(x_{i_1},\dots,x_{i_1})}{\partial(u_{1},\dots,u_{k})}du}
+    \end{equation*}
+    where $D$ is the parameter domain of $\Phi$ and $\frac{\partial(x_{i_1},\dots,x_{i_1})}{\partial(u_{1},\dots,u_{k})}$ is the Jacobian of mapping $(u_1,\dots,u_k)\mapsto (\phi_{i_1}(u),\dots\phi_{i_k}(u))$. We say $\omega=0$ if $\int_{\Phi}{\omega}$ for every k-surface $\Phi$.
+\end{definition}
+There are some elementary properties of k-form but we will not mention them here. We only talk about two operations of  k-form, the multiplication and differentiation.\par
+Suppose $\omega=\sum_I b_I(x)dx_I$ and $\lambda=\sum_J c_J(x)dx_J$ are p-form and q-form. The product of $\omega$ and $\lambda$ is defined to be:
+\begin{equation*}
+    \omega\wedge\lambda=\sum_{I,J}b_I(x)c_J(x)d{x_I}\wedge dx_J
+\end{equation*}
+Notice the product of 0-form with p-form can be interchanged:
+\begin{equation*}
+    f\omega=\omega f=\sum_If(x)b_I(x)dx_I
+\end{equation*}
+The differentiation of k-form $\omega$ is assigning a (k+1)-form $d\omega$ on $\omega$. When $\omega$ is a 0-form, in other words, $\omega$ is a real function $f$, we define:
+\begin{equation*}
+    df=\sum_{i=1}^n\frac{\partial f}{\partial x_i}(x)dx_i
+\end{equation*}
+When $\omega=\sum b_I(x)dx_I$ is a k-form, we define:
+\begin{equation*}
+    d\omega=\sum_I (db_I)\wedge dx_I=\sum_I (\sum_{i=1}^n\frac{\partial b_I}{\partial x_i}(x)dx_i)\wedge dx_I=\sum_I \sum_{i=1}^n\frac{\partial b_I}{\partial x_i}(x)dx_i\wedge dx_I
+\end{equation*}
+This two operations on differential form are a little different from differentiation on functions:
+\begin{enumerate}
+    \item If $\omega$ and $\lambda$ are k-form and p-form. Then $d(\omega\wedge\lambda)=(d\omega)\wedge\lambda+(-1)^k \omega\wedge d\lambda$.
+    \item $d^2\omega=0$.
+\end{enumerate}
+\section{Change of variables in differential form}
+Suppose $E$ is an open set in $\mathbb{R}^n$, $T=(t_1(x),t_2(x),\dots,t_m(x))$ is a $C^1$ mapping of $E$ into a open set $V\subset \mathbb{R}^m$, and $\omega=\sum_I b_I(y)dy_I$ is a k-form in $V$. We define $\omega_T$ as:
+\begin{equation*}
+    \omega_T=\sum_I b_I(T(x))dt_{i_1}\wedge\dots\wedge dt_{ik}
+\end{equation*}
+Given a k-surface $\Phi$ with parameter domain $D$, we define a k-surface $\Delta$ in $\mathbb{R}^k$ by $\Delta(u)=u$. we have change of domain of integration:
+\begin{equation*}
+    \int_{\Phi}{\omega}=\int_{\Delta}{\omega_\Phi}
+\end{equation*}
+More generally, we can change of domain of integration between two k-surfaces under a $C^1$ mapping $T$:
+\begin{equation*}
+    \int_{T\Phi}{\omega}=\int_{\Phi}{\omega_T}
+\end{equation*}
+where $T$ maps k-surface $\Phi$ in $\mathbb{R}^n$ to k-surface $T\Phi$ in $\mathbb{R}^m$.
+\section{Simplexes and chains}
+We define oriented affine k-simplex 
+\begin{equation*}
+    \sigma=[p_0,p_1,\dots p_k]
+\end{equation*}
+to be the k-surface wither parameter domain $Q^k$ which is given by the affine mapping:
+\begin{equation*}
+    \sigma(\alpha_1e_1+\cdots+\alpha_ke_k)=p_0+\sum_{i=1}^k\alpha_i(p_i-p_0)
+\end{equation*}
+The $Q^k$ called the standard simplex, which is the set of all $u\in \mathbb{R}^k$ of the form $u=\sum_{i=1}^k\alpha_ie_i$ such that $\alpha_i\geq 0$ and $\sum a_i\leq 1$. When $k=0$, the oriented 0-simplex is defined to be a point with a sign attached. We write $\sigma=+p_0$ or $\sigma=-p_0$. And integration of real function on this simplex $\sigma=\epsilon p_0$ is defined to be:
+\begin{equation*}
+    \int_{\sigma}f=\epsilon f(p_0)
+\end{equation*}\par
+An affine k-chain $\Gamma$ is a collection of finitely many oriented affine k-simplexes $\sigma_1,\dots \sigma_r$. And we define the integration of k-form $\omega$ on $\Gamma$ to be:
+\begin{equation*}
+    \int_{\Gamma}\omega=\sum_{i=1}^r\int_{\sigma}\omega
+\end{equation*}
+and symbolically we write:
+\begin{equation*}
+    \Gamma=\sigma_1+\cdots+\sigma_r=\sum_{i=1}^r\sigma_i
+\end{equation*}
+We write $\Gamma=0$ if $\int_{\Gamma}\omega=0$ for all $\omega$.\par
+For $k\geq 1$, given an affine k-simplex $\sigma=[p_0,p_1,\dots p_k]$, we define the boundary of $\sigma$ to be the affine (k-1)-chain:
+\begin{equation*}
+    \partial \sigma=\sum_{j=0}^k(-1)^j[p_0,\dots,p_{j-1},p_{j+1},\dots, p_k]
+\end{equation*}\par
+After the affine case, now we can consider the general case. Let $T$ be a $C^2$ mapping from $E\subset \mathbb{R}^n$ to $V\subset \mathbb{R}^m$. We consider the composite mapping $\Phi=T\sigma$, which is a k-surface in $V$. We call $\Phi$ an oriented k-simplex. The k-chain $\Psi=\sum \Phi_i$ is defined to be:
+\begin{equation*}
+    \int_{\Psi}{\omega}=\sum_{i=1}^r\int_{\Phi_i}{\omega}
+\end{equation*}
+And the boundary $\partial\Phi$ of k-simplex $\Phi$ is (k-1)-chain:
+\begin{equation*}
+    \partial\Phi=T(\partial\sigma)
+\end{equation*}
+And the boundary $\partial\Psi$ of k-chain $\Psi=\sum \Phi_i$ is (k-1)-chain:
+\begin{equation*}
+    \partial\Psi=\sum\partial\Phi_i
+\end{equation*}
+\section{Stoke's theorem, closed and exact forms}
+The Stoke's theorem is:
+\begin{theorem}
+    If $\Psi$ is a k-chain and if $\omega$ is a (k-1)-form, then
+    \begin{equation*}
+        \int_{\Psi}{d\omega}=\int_{\partial\Psi}{\omega}
+    \end{equation*}
+\end{theorem}
+Given a k-form $\omega$ in an open set $E\subset \mathbb{R}^n$, if there is a (k-1)-form $\lambda$ s.t. $\omega=d\lambda$, then $\omega$ is said to be exact in $E$. If $d\omega=0$, then $\omega$ is said to be closed. Since $d^2\omega=0$, every exact form is closed. The converse is true if $E$ is convex open set (Poincare's lemma). The convex property guarantees us to use mean value inequality, more precisely, $f'(x)=0$ on $E$ implies $f(x)$ is constant on $E$ if $E$ is convex. This statement is important in proof of Poincare's lemma.\par
+Given a open set $E$, which satisfies all closed form on $E$ is exact form. We map $E$ onto $U$ by a 1-1 $C^2$ mapping $T$ which $T^{-1}$ is also in $C^2$. Then every closed k-form in $U$ is exact in $U$ (Theorem 10.40). We call $E$ and $U$ are $C^2$-equivalent.\par
+Thus not only on convex open set closed forms are exact s, but also on any open set is $C^2$-equivalent to a convex set they are.\par 
+\section{Vector analysis}
+In this section we talk some examples and theorems related to differential forms in $\mathbb{R}^3$.\par
+Let $F=F_1e_1+F_2e_2+F_3e_3$ be a continuous mapping of an open set $E\subset \mathbb{R}^3$. We associated $F$ with following differential forms and functions:
+\begin{enumerate}
+    \item $\lambda_F=F_1dx+F_2dy+F_3dz$
+    \item $\omega_F=F_1dy\wedge dz+F_2dz\wedge dx+F_3dx\wedge dz$
+    \item $\nabla\cdot F=D_1F_1+D_2F_2+D_3F_3$
+    \item $\nabla\times F=(D_2F_3-D_3F_2)e_1+(D_3F_1-D_1F_3)e_2+(D_1F_2-D_2F_1)e_3$
+\end{enumerate}
+And associated a real function $u$ with its gradient:
+\begin{equation*}
+    \nabla u=(D_1u)e_1+(D_2u)e_2+(D_3u)e_3
+\end{equation*}
+By easy computation, the following equations:
+\begin{equation*}
+    F=\nabla u,\quad \nabla\times F=0,\quad F=\nabla\times G,\quad \nabla\cdot F=0
+\end{equation*}
+are equivalent to:
+\begin{equation*}
+    \lambda_F=du,\quad d\lambda_F=0,\quad \omega_F=d\lambda_G,\quad d\omega_F=0
+\end{equation*}
+By using the equations of differential form, we can prove:
+\begin{enumerate}
+    \item If $F=\nabla u$, then $\nabla\times F=0$
+    \item If $F=\nabla\times G$, then $\nabla\cdot F=0$
+\end{enumerate}
+Then converse is true if $E$ is $C^2$ equivalent to a convex set.\par
+Now we consider the relation between integrations of above differential forms and functions.\par
+Given a 1-surface (curve) $\gamma$ in an open set $E\subset \mathbb{R}^3$ with parameter interval $[0,1]$, we define the unit vector $\mathbf{t}(u)$ to be $\gamma'(u)=\abs{\gamma'(u)}\mathbf{t}(u)$ and the element of arc length $ds$ to be $\abs{\gamma'(u)}du$. We have:
+\begin{equation*}
+    \int_{\gamma}{\lambda_F}=\int_{0}^1{F(\gamma(u))\cdot \mathbf{t}(u))ds}
+\end{equation*}
+And we denote the second integration as $\int_{\gamma}{(F\cdot \mathbf{t})ds}$.\par
+Given a 2-surface $\Phi$ in an open set $E\subset \mathbb{R}^3$ with parameter domain $D$, we define 
+\begin{equation*}
+    N(u,v)=\frac{\partial(y,z)}{\partial(u,v)}e_1+\frac{\partial(z,x)}{\partial(u,v)}e_2+\frac{\partial(x,y)}{\partial(u,v)}e_3   
+\end{equation*}
+where $(x,y,z)=\Phi(u,v)$. And we define the unit vector $\mathbf{n}(u,v)$ to be $N(u,v)=\abs{N(u,v)}\mathbf{n}(u,v)$ and the element of area $dA$ to be $\abs{N(u,v)}dudv$. We have:
+\begin{equation*}
+    \int_{\Phi}{\omega_F}=\int_{D}{F(\Phi(u,v))\cdot \mathbf{n}(u,v))dA}
+\end{equation*}
+And we denote the second integration as $\int_{\Phi}{(F\cdot \mathbf{n})dA}$.\par
+By Stoke's formula, we have:
+\begin{enumerate}
+    \item Stoke's formula: $\int_{\Phi}{(\nabla\times F)\cdot \mathbf{n}dA}=\int_{\partial\Phi}{(F\cdot \mathbf{t})ds}$
+    \item The divergence theorem: $\int_{\Omega}{(\nabla\cdot F)dV}=\int_{\partial\Omega}{(F\cdot \mathbf{n})dA}$
+\end{enumerate}
+% \end{document}
 
