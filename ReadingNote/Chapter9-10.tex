@@ -135,7 +135,21 @@ Now consider the mapping $G$ inverts $F$ and an inverse linear transformation $T
 \end{equation*}
 Let $h\to 0$, we see $T\to F'(a)$. The mapping $H$ in this example can be considered as $G(F'(a))$.\par
 So what does the theorem told us? If the range of $F'(x)$ is $\mathbb{R}^m$, we can first map $x$ to $H(x)$, then $F\circ H$ can be described as linear transform $F'(a)$. $H$ changes as your chosen $a$ changes. In other words, after a homeomorphism mapping $x\to H^{-1}(x)$, any function $F$ with $F'(x)$ being surjective can be considered as a linear mapping locally in $H^{-1}(U)$.\par
-Things changes if $F'(a)$ is not surjective. $F'(x)$ can not fill the space $\mathbb{R}^m$, so we fill the rest part by the function $\phi$.
+Things changes if $F'(a)$ is not surjective. $F'(x)$ can not fill the space $\mathbb{R}^m$, so we fill the rest part by the function $\phi$.\par
+\begin{remark}
+    If $y\in F(U)$, then $y=F(H(x))$ for some $x\in V$. Also if $x\in V$, then $y=F(H(x))\in F(U)$. Since $y=F(H(x))=Ax+\phi(Ax)$ and $\phi$ maps $A(V)$ to null space of $P$. We have:
+    \begin{equation*}
+        Py=PAx+P(\phi(Ax))=PAx=Ax
+    \end{equation*}
+    So $P$ is a mapping of $F(U)$ to $A(V)$ ($y\mapsto Py=A(x)$). The equation in Rank theorem can be rewritten as:
+    \begin{equation*}
+        y=Py+\phi(Py)
+    \end{equation*}
+    $P$ is surjective since $y$ is a function of $Py$ ($Ax$). Since $y$ is determined by its projection $Py$, $P$ is injective. Thus $P$ is a 1-1 mapping of $F(U)$ onto $A(V)$. Since the dimension of $A(V)$ is r, $F(U)$ is an 'r-dimensional surface'. The range of $\phi(Py)$ is in the null space of $P$. So $Py$ and $\phi(Py)$ is in two orthogonal space and we can write $F(H(x))=Ax+\phi(Ax)=(Ax,\phi(Ax))\in (\mathbb{R}^r,\mathbb{R}^{n-r})$. This is the graph of $\phi$.\par
+    Now consider the mapping $\Phi(x)=F(H(x))$. The level sets is $\{\Phi^{-1}(a)|a\in \mathbb{R}^m\}$ where $\Phi^{-1}(a)=\{x\in \mathbb{R}^n|\Phi(x)=a\}$. $\Phi(x)=Ax+\phi(Ax)=(Ax,\phi(Ax))$, so $\Phi(x)$ is fixed if and only if $Ax$ is fixed. Thus $\{\Phi^{-1}(a)|a\in \mathbb{R}^m\}=\{A^{-1}a|a\in \mathbb{R}^m\}$
+    where $A^{-1}a=\{x\in \mathbb{R}^n|Ax=a\}$. $A^{-1}a$ is 'flat' since they are $V\cap (x_0+\mathscr{N}(A))$ where $Ax_0=a$ (intersections with V of translates of the vector space $\mathscr{N}(A)$).\par
+    The level sets of $F(x)$ in $U$ is the level sets of $\Phi(H^{-1}(x))$ in $V$ since $H$ is a 1-1 $C^1$ mapping of $V$ onto $U$ (replace $x$ by $H^{-1}(x)$ in function $F(H(x))$). Thus the level sets of $F(x)$ is $\{F^{-1}(a)| H(V\cap (x_0+\mathscr{N}(A)))\}$ where $F(H(x_0))=a$. They are thus '(n-r)-dimensional surfaces' in $U$ (the surfaces have the form $H(V\cap (x_0+\mathscr{N}(A)))$).
+\end{remark}
 \section{Derivatives of higher order and differentiation of Integrals}
 We actually talk about higher order partial derivatives, we have mean value theorem on second partial derivative:
 \begin{equation*}

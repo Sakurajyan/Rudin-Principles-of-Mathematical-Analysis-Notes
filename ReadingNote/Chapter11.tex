@@ -24,7 +24,7 @@ This chapter is about Lebesgue theory of measure and integration. Our final goal
 \section{measure on sets}
 A measure (or a set function) is defined on a family of subset of a given space. First we specify what family of subsets we care about.\par
 We care about two type of family of subsets: the ring and the $\sigma$-ring. A family $\mathscr{R}$ of subsets is called ring if it is closed under union operation and set minus operation. A ring $\mathscr{R}$ is called a $\sigma$-ring if it is closed under countable union operation.\par
-A set function $\phi$ on $\mathscr{R}$ is a map from $\mathscr{R}$ to $\overline{\mathbb{R}}$. We call $\phi$ is additive if $A\cap B=0$ implies $\phi(A\cap B)=\phi(A)+\phi(B)$ and we call $\phi$ is countably additive (or $\sigma$-additive) if $A_j\cap A_i=0$ implies $\phi(\cap_{i=1}^\infty A_i)=\sum_{i=1}^\infty\phi(A)$.\par 
+A set function $\phi$ on $\mathscr{R}$ is a map from $\mathscr{R}$ to $\overline{\mathbb{R}}$. We call $\phi$ is additive if $A\cap B=0$ implies $\phi(A\cup B)=\phi(A)+\phi(B)$ and we call $\phi$ is countably additive (or $\sigma$-additive) if $A_j\cap A_i=0$ implies $\phi(\cup_{i=1}^\infty A_i)=\sum_{i=1}^\infty\phi(A)$.\par 
 Countably additive set function $\phi$ on a ring $\mathscr{R}$ is continuous in following sense:
 \begin{enumerate}
     \item $A_i$ is a sequence of increasing sets, $A_1\subset A_2\subset\cdots$, $A\in \mathscr{R}$ and $A=\cup_{i=1}^\infty A_i$. Then $\phi(A_n)\to \phi(A)$.
